@@ -2,6 +2,15 @@
 
 Todas as mudanças notáveis serão documentadas aqui. Formato [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/); versionamento [SemVer](https://semver.org/lang/pt-BR/).
 
+## [0.1.3] — 2026-11-19
+
+### Adicionado
+
+- **Pacote npm `danfse-core`**: sem banco (assets e catálogo IBGE embutidos no dist) +
+  **CLI `danfse`** (`danfse nota.xml -o saida.pdf --stc 2 --canhoto false`, validação de
+  parâmetros idêntica ao serviço).
+- Swagger: versão lida do package.json em runtime.
+
 ## [0.1.2] — 2026-11-19
 
 ### Corrigido

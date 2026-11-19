@@ -16,7 +16,7 @@ import {
 } from "@nestjs/common";
 import { ApiBody, ApiOkResponse, ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
 import type { Response } from "express";
-import { gerarDanfse, situacaoNotaPorSTC } from "@danfse/core";
+import { gerarDanfse, situacaoNotaPorSTC } from "danfse-core";
 import { ErroHttp } from "./erro-http.js";
 
 @ApiTags("DANFSe")

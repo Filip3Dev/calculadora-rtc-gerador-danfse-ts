@@ -1,4 +1,5 @@
 import "reflect-metadata";
+import { readFileSync } from "node:fs";
 import { NestFactory } from "@nestjs/core";
 import type { NestExpressApplication } from "@nestjs/platform-express";
 import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
@@ -35,7 +36,15 @@ async function bootstrap(): Promise<void> {
   const config = new DocumentBuilder()
     .setTitle("DANFSe Service")
     .setDescription("Serviço HTTP para gerar o DANFSe em PDF a partir do XML de uma NFS-e.")
-    .setVersion(process.env.npm_package_version ?? "0.1.0")
+    .setVersion(
+      (() => {
+        try {
+          return JSON.parse(readFileSync(new URL("../package.json", import.meta.url), "utf8")).version as string;
+        } catch {
+          return "0.0.0";
+        }
+      })(),
+    )
     .addTag("DANFSe")
     .addTag("Health")
     .build();

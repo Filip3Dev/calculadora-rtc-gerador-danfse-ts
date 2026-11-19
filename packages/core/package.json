@@ -1,7 +1,7 @@
 {
-  "name": "@danfse/core",
-  "version": "0.1.0",
-  "description": "Motor de cálculo CBS/IBS do Simples Nacional (LC 123/2006, LC 214/2025, NT 2026.005) — porte TypeScript, paridade estrita com a API oficial",
+  "name": "danfse-core",
+  "version": "0.1.3",
+  "description": "Gerador de DANFSe (PDF) a partir do XML da NFS-e Nacional — porte TypeScript do serviço oficial em Go da Receita Federal, paridade visual/estrutural. Sem banco de dados; CLI inclusa.",
   "license": "MIT",
   "type": "module",
   "main": "dist/index.js",
@@ -25,5 +25,34 @@
     "typescript": "^5.9.0",
     "vitest": "^3.2.0",
     "pdfjs-dist": "^4.0.0"
+  },
+  "keywords": [
+    "receita-federal",
+    "nfse",
+    "danfse",
+    "pdf",
+    "reforma-tributaria",
+    "tributos"
+  ],
+  "bin": {
+    "danfse": "dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Filip3Dev/calculadora-rtc-gerador-danfse-ts.git",
+    "directory": "packages/core"
+  },
+  "homepage": "https://github.com/Filip3Dev/calculadora-rtc-gerador-danfse-ts#readme",
+  "bugs": {
+    "url": "https://github.com/Filip3Dev/calculadora-rtc-gerador-danfse-ts/issues"
+  },
+  "author": "Filip3Dev",
+  "engines": {
+    "node": ">=22"
   }
 }
