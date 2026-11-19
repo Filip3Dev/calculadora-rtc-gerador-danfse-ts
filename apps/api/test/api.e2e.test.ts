@@ -88,7 +88,13 @@ describe("e2e — contrato do serviço oficial Go", () => {
     const r = await post("<OutraRoot/>");
     expect(r.status).toBe(400);
     const corpo = await r.json();
-    expect(corpo.mensagem).toContain('XML root element is "OutraRoot", expected NFSe');
+    expect(corpo.mensagem).toBe("expected element type <NFSe> but have <OutraRoot>");
+  });
+
+  it("documento de outro modelo (NFCom/NFe) → 400 mensagem do decoder", async () => {
+    const r = await post('<?xml version="1.0" encoding="UTF-8"?><nfcomProc versao="1.00"/>');
+    expect(r.status).toBe(400);
+    expect((await r.json()).mensagem).toBe("expected element type <NFSe> but have <nfcomProc>");
   });
 
   it("Id vazio → 400 infNFSe Id is empty", async () => {

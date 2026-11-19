@@ -96,6 +96,7 @@ export function prepararNFSe(xmlData: string, situacao: SituacaoNotaTipo, maxInp
 
   const parser = new XMLParser({
     ignoreAttributes: false,
+    ignoreDeclaration: true, // PARITY: sem isto a declaração <?xml?> vira raiz falsa "?xml"
     attributeNamePrefix: "@_",
     parseTagValue: false,
     parseAttributeValue: false,
@@ -103,15 +104,16 @@ export function prepararNFSe(xmlData: string, situacao: SituacaoNotaTipo, maxInp
     processEntities: true,
   });
   const bruto = parser.parse(xmlData) as No;
-  const raizNome = Object.keys(bruto).find((k) => k.replace(/^.*:/, "") === "NFSe" || k.replace(/^.*:/, "").toLowerCase() === "nfse");
+  const raizNome = Object.keys(bruto).find((k) => k.replace(/^.*:/, "") === "NFSe");
   if (!raizNome) {
-    // PARITY: XML root element is %q, expected NFSe
-    const qualquer = Object.keys(bruto)[0] ?? "";
-    throw new Error(`XML root element is "${qualquer.replace(/^.*:/, "")}", expected NFSe`);
+    // PARITY: encoding/xml com XMLName — match case-SENSITIVE da raiz; a
+    // mensagem é a do decoder (validada no oficial: vale até para <nfse> minúsculo).
+    const local = (Object.keys(bruto)[0] ?? "").replace(/^.*:/, "");
+    throw new Error(`expected element type <NFSe> but have <${local}>`);
   }
   const raiz = objeto(bruto[raizNome] as No | string | null);
   if (!raiz) {
-    throw new Error('XML root element is "NFSe", expected NFSe');
+    throw new Error("expected element type <NFSe> but have <NFSe>");
   }
 
   const inf = objeto(elem(raiz, "infNFSe")) ?? {};
