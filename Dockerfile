@@ -7,9 +7,9 @@ COPY pnpm-workspace.yaml package.json tsconfig.base.json ./
 COPY packages/core/package.json packages/core/
 # sem --ignore-scripts: sem binding nativo aqui (pdf-lib/qrcode são JS puro)
 COPY apps/playground/package.json apps/playground/
-RUN pnpm install --filter @danfse/core --frozen-lockfile=false
+RUN pnpm install --filter danfse-core --frozen-lockfile=false
 COPY packages/core packages/core
-RUN pnpm --filter @danfse/core build
+RUN pnpm --filter danfse-core build
 COPY apps/api/package.json apps/api/
 RUN pnpm install --frozen-lockfile=false
 COPY apps/api apps/api
