@@ -75,6 +75,18 @@ pnpm deploy:cloudflare
 > Wrangler pinado em `4.136.1` (linha 4.165+ falha `Unauthorized` no push de imagem — ver CHANGELOG dos projetos irmãos).
 
 
+
+## Pacote npm
+
+O motor também é distribuído como pacote npm pronto para uso (**sem servidor**), com banco de dados embutido e CLI:
+
+```bash
+npm i danfse-core
+npx danfse-core --help   # CLI do pacote
+```
+
+Detalhes e exemplos: [README do pacote](packages/core/README.md) · [npmjs.com/package/danfse-core](https://www.npmjs.com/package/danfse-core)
+
 ## Upstream tracking
 
 O workflow [Upstream Tracking](.github/workflows/upstream-tracking.yml) roda diariamente (09:00 BRT) e vigia os repositórios oficiais da Receita Federal: quando há movimento (tag/commits/migrações Flyway novas), abre uma issue (label `upstream`) com o diff e os passos de sincronização — e, quando há migrações novas, um **PR automático** com os SQLs para o CI validar (banco + golden). O estado da última sincronização vive em `.upstream/state.json`; o probe do piloto oficial (nuvem) também reporta dados ainda não publicados no GitHub.
