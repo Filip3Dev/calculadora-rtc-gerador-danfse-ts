@@ -1,0 +1,11 @@
+{
+  "watch": [
+    { "repo": "ReceitaFederal/calculadora-rtc-gerador-danfse" }
+  ],
+  "syncSteps": [
+    "Revisar o diff do oficial (labels.go, renderer, presenter, format, models — mudanças de layout/texto refletem direto no PDF)",
+    "Portar as mudanças em packages/core (labels/renderer/presenter)",
+    "Regenerar os PDFs de referência (fixtures/*.pdf) com o binário oficial Go rebuildado em Docker e rodar pnpm test (golden visual linha a linha aponta divergências)",
+    "Merge → CHANGELOG → release → pnpm deploy:cloudflare"
+  ]
+}

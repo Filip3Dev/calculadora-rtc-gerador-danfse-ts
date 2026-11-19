@@ -1,0 +1,10 @@
+{
+  "repos": {
+    "ReceitaFederal/calculadora-rtc-gerador-danfse": {
+      "tag": "1.0.0",
+      "release": "1.0.0",
+      "sha": "8d79e6b2f7",
+      "migration": null
+    }
+  }
+}
