@@ -1,0 +1,39 @@
+{
+  // Worker de borda do DANFSe Service: publica o playground como Static Assets
+  // e proxya /api/* e /health/* para o container (Dockerfile da raiz).
+  "name": "danfse-service",
+  "main": "src/index.ts",
+  "compatibility_date": "2025-10-08",
+  "compatibility_flags": ["nodejs_compat"],
+
+  // Domínio próprio (cria o registro DNS + certificado no deploy).
+  "routes": [{ "pattern": "danfse.bitpag.xyz", "custom_domain": true }],
+
+  // run_worker_first: navegações a /api/* e /health/* (ex.: swagger) chegam ao
+  // Worker ANTES do fallback SPA do Static Assets.
+  "assets": {
+    "directory": "../../apps/playground/dist",
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/api/*", "/health/*"]
+  },
+
+  "containers": [
+    {
+      "class_name": "DanfseContainer",
+      "scheduling_policy": "durable_object",
+      "images": {
+        "base": { "dockerfile": "../../Dockerfile" }
+      }
+    }
+  ],
+
+  "durable_objects": {
+    "bindings": [{ "name": "CONTAINER", "class_name": "DanfseContainer" }]
+  },
+
+  "exports": {
+    "DanfseContainer": { "type": "durable-object", "storage": "sqlite" }
+  },
+
+  "observability": { "enabled": true }
+}
