@@ -1,0 +1,28 @@
+{
+  "name": "@danfse/core",
+  "version": "0.1.0",
+  "description": "Motor de cálculo CBS/IBS do Simples Nacional (LC 123/2006, LC 214/2025, NT 2026.005) — porte TypeScript, paridade estrita com a API oficial",
+  "license": "MIT",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "fast-xml-parser": "^5.0.0",
+    "pdf-lib": "^1.17.1",
+    "qrcode": "^1.5.4"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "@types/qrcode": "^1.5.5",
+    "typescript": "^5.9.0",
+    "vitest": "^3.2.0"
+  }
+}
