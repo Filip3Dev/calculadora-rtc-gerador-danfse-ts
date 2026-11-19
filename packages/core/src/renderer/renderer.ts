@@ -770,13 +770,12 @@ function desenharMarcaDagua(ctx: Ctx, marca: DocumentoDanfse["MarcaDagua"]): voi
   if (marca.Texto === "") return;
   const size = marca.TamanhoFonte;
   const w = measure(ctx.bold, marca.Texto, size);
-  const diagonal = Math.sqrt(PAGE_W ** 2 + PAGE_H ** 2);
-  // Centraliza o texto no centro da página ao longo da diagonal de 45°.
-  const cx = PAGE_W / 2;
-  const cy = PAGE_H / 2;
-  const offset = (diagonal - w) / 2;
-  const x = cx + (offset / Math.SQRT2) * Math.cos((45 * Math.PI) / 180);
-  const y = cy + (offset / Math.SQRT2) * Math.sin((45 * Math.PI) / 180);
+  // Texto centrado no meio da página ao longo da diagonal de 45°: o início fica
+  // deslocado (w/2) para trás na direção (cos45, sin45) — assim o texto inteiro
+  // atravessa o centro e permanece dentro da página.
+  const rad = (marca.Angulo * Math.PI) / 180;
+  const x = PAGE_W / 2 - (w / 2) * Math.cos(rad);
+  const y = PAGE_H / 2 - (w / 2) * Math.sin(rad);
   ctx.page.drawText(marca.Texto, {
     x,
     y,
