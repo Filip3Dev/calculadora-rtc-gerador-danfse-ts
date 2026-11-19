@@ -1,7 +1,7 @@
 {
   "name": "calculadora-rtc-gerador-danfse-ts",
   "private": true,
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Porte TypeScript do Gerador de DANFSe (Receita Federal) — API NestJS + playground, paridade visual/estrutural com o serviço oficial em Go",
   "license": "MIT",
   "engines": {

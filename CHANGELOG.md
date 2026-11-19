@@ -2,6 +2,16 @@
 
 Todas as mudanças notáveis serão documentadas aqui. Formato [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/); versionamento [SemVer](https://semver.org/lang/pt-BR/).
 
+## [0.1.2] — 2026-11-19
+
+### Corrigido
+
+- Raiz XML incompatível (ex.: NFCom/NFe) reportava `XML root element is "?xml"` —
+  a declaração `<?xml?>` era tratada como raiz. Agora a mensagem é a exata do
+  `encoding/xml` oficial: `expected element type <NFSe> but have <X>` (validada
+  contra o serviço Go, inclusive para `<nfse>` minúsculo). Novo caso e2e cobre
+  documentos de outros modelos.
+
 ## [0.1.1] — 2026-11-19
 
 ### Adicionado
