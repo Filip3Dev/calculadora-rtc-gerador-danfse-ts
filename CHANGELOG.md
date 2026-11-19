@@ -2,6 +2,13 @@
 
 Todas as mudanças notáveis serão documentadas aqui. Formato [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/); versionamento [SemVer](https://semver.org/lang/pt-BR/).
 
+## [0.1.1] — 2026-11-19
+
+### Adicionado
+
+- **Upstream tracking**: workflow diário (09:00 BRT) vigia o repositório oficial Go (gerador-danfse) — movimento abre
+  issue automática (label `upstream`) com diff e passos de sincronização — os passos cobrem portar labels/renderer e regenerar os PDFs de referência do golden visual.
+
 ## [0.1.0] — 2026-11-19
 
 ### Adicionado
