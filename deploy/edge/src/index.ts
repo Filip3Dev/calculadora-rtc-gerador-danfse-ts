@@ -12,7 +12,7 @@ const PORT = 8080;
 const INACTIVITY_TIMEOUT_MS = 10 * 60 * 1000;
 
 /** Nome estável → hash determinístico garante uma única instância global. */
-const INSTANCE_NAME = "danfse-v1"; // bump: força container novo
+const INSTANCE_NAME = "danfse-v2"; // bump: força container novo
 
 /** Sonda de prontidão: GET leve sem dependências. */
 const HEALTH_PATH = "/health/live";
